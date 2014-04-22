@@ -1,0 +1,17 @@
+restart Tomcat:
+
+$CATALINA_HOME/bin/shutdown.sh
+
+<!--<c:out value = "${name}"></c:out>
+
+<sql:query var="rs" dataSource="jdbc/TestDB">
+select id, name, email from offer
+</sql:query>
+
+<h2>Results</h2>
+
+<c:forEach var="row" items="${rs.rows}">
+    ID ${row.id}<br/>
+    Name ${row.name}<br/>
+</c:forEach>
+-->
