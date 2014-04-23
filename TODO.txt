@@ -2,4 +2,7 @@
 
 
 Tomcat/DB
+
+* Style format with Thymeleaf or Bootstrap or..
+* go over web tutorial on spring.io again
 * Change user and password to not root

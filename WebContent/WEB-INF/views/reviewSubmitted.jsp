@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-Review created
+Review submitted: <a href="${pageContext.request.contextPath}/reviews"> click here to return to the reviews.</a>
 </body>
 </html>

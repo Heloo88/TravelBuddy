@@ -20,4 +20,13 @@ public class ReviewService {
 	public List<Review> getCurrent(){
 		return reviewDao.getReviews();
 	}
+
+	public void create(Review review) {
+		reviewDao.create(review);
+	}
+
+	public void throwTestException() {
+		reviewDao.getReview(888888);	
+	}
+
 }
