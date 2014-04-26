@@ -7,8 +7,12 @@
 
 input[type=text]{
 width: 250 px;
-padding=left: 10 px;
 }
+
+input[type=password]{
+width: 250 px;
+}
+
 textarea {
 width:25 px;
 height:250 px;
@@ -21,6 +25,12 @@ vertical-align: top;
 .error {
 	font-size: small;
 	color: red;
+	margin-left: 10 px;
+}
+
+.valid {
+	font-size: small;
+	color: green;
 	margin-left: 10 px;
 }
 

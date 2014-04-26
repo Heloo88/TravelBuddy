@@ -1,5 +1,7 @@
 package com.travelbuddy.web.controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,11 @@ public class LoginController {
 		return "login";
 	}
 
+	@RequestMapping("/loggedout")
+	public String showLoggedOut() {
+		return "loggedout";
+	}
+	
 	@RequestMapping("/newaccount")
 	public String showNewAccount(Model model) {
 
@@ -41,7 +48,7 @@ public class LoginController {
 			return "newaccount";
 		}
 
-		user.setAuthority("user");
+		user.setAuthority("ROLE_USER");
 		user.setEnabled(true);
 
 		if(usersService.exists(user.getUsername())) {
@@ -56,5 +63,17 @@ public class LoginController {
 		}
 		return "accountcreated";
 	}
-
+	
+	@RequestMapping("/admin")
+	public String showAdmin(Model model) {
+		//throw new AccessDeniedException("Hello");
+		List<User> users = usersService.getAllUsers();
+		model.addAttribute("users",users);
+		return "admin";
+	}
+	
+	@RequestMapping("/denied")
+	public String showDenied() {
+		return "denied";
+	}
 }
