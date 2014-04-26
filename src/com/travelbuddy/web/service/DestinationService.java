@@ -6,15 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.travelbuddy.web.dao.Destination;
-import com.travelbuddy.web.dao.DestinationDAO;
+import com.travelbuddy.web.dao.DestinationDao;
 
 @Service("destinationService")
 public class DestinationService {
 	
-	private DestinationDAO destinationDao;
+	private DestinationDao destinationDao;
 	
 	@Autowired
-	public void setDestinationDao(DestinationDAO destinationDao) {
+	public void setDestinationDao(DestinationDao destinationDao) {
 		this.destinationDao = destinationDao;
 	}
 	

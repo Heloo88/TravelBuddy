@@ -6,14 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.travelbuddy.web.dao.Review;
-import com.travelbuddy.web.dao.ReviewDAO;
+import com.travelbuddy.web.dao.ReviewDao;
 
 @Service("reviewService")
 public class ReviewService {
-	private ReviewDAO reviewDao;
+	private ReviewDao reviewDao;
 	
 	@Autowired
-	public void setreviewDao(ReviewDAO reviewDao) {
+	public void setreviewDao(ReviewDao reviewDao) {
 		this.reviewDao = reviewDao;
 	}
 	

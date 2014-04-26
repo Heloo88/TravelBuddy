@@ -1,17 +1,18 @@
-restart Tomcat:
+* Git locatie: https://bitbucket.org/JeroenDh/travelbuddy
+	git commit -a
+	git push
+
+* restart Tomcat:
 
 $CATALINA_HOME/bin/shutdown.sh
 
-<!--<c:out value = "${name}"></c:out>
 
+* SQL and other EL-expressions
 <sql:query var="rs" dataSource="jdbc/TestDB">
 select id, name, email from offer
 </sql:query>
-
-<h2>Results</h2>
 
 <c:forEach var="row" items="${rs.rows}">
     ID ${row.id}<br/>
     Name ${row.name}<br/>
 </c:forEach>
--->
