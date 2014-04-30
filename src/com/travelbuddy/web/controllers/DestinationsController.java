@@ -36,8 +36,8 @@ public class DestinationsController {
 		return "home";
 	}
 	
-	@RequestMapping("/createDestination")
+	@RequestMapping("/createdestination")
 	public String createDestination() {
-		return "createDestination";
+		return "createdestination";
 	}
 }

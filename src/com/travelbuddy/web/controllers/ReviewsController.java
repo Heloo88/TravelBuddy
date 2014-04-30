@@ -1,5 +1,6 @@
 package com.travelbuddy.web.controllers;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -10,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.travelbuddy.web.dao.Review;
 import com.travelbuddy.web.service.ReviewService;
@@ -37,20 +39,39 @@ public class ReviewsController {
 		return "reviews";
 	}
 
-	@RequestMapping("/createReview")
-	public String createReview(Model model) {
-		model.addAttribute("review",new Review());
-		return "createReview";
+	@RequestMapping("/createreview")
+	public String createReview(Model model, Principal principal) {
+		
+		Review review = null;
+		
+		if(principal != null) {
+			String username = principal.getName();
+			review = reviewService.getReview(username);
+		}
+		if(review == null) {
+			review = new Review();
+		}
+		model.addAttribute("review",review);
+		return "createreview";
 	}
 
 	@RequestMapping(value = "/docreate", method = RequestMethod.POST) 
 	public String doCreate(Model model, @Valid Review review,
-			BindingResult result) {
+			BindingResult result, Principal principal, @RequestParam(value="delete", required = false) String delete) {
 		if (result.hasErrors()) {
-			return "createReview";
+			return "createreview";
+		}	
+		if(delete == null) {
+			String username = principal.getName();
+			review.getUser().setUsername(username);
+			reviewService.saveOrUpdate(review);
+			System.out.println(review);
+			return "reviewsubmitted";
 		}
-		reviewService.create(review);
-		System.out.println(review);
-		return "reviewSubmitted";
+		else {
+			reviewService.delete(review.getId());
+			return "reviewdeleted";
+		}
+
 	}
 }

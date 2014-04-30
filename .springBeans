@@ -11,6 +11,7 @@
 		<config>src/com/travelbuddy/web/config/dao-context.xml</config>
 		<config>src/com/travelbuddy/web/config/service-context.xml</config>
 		<config>src/com/travelbuddy/web/config/security-context.xml</config>
+		<config>test/com/travelbuddy/web/test/config/datasource.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

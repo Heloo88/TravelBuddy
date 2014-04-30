@@ -29,43 +29,24 @@ public class ReviewDao {
 
 	public List<Review> getReviews() {
 
-		return jdbc.query("select * from Review",
-				new RowMapper<Review>() {
-
-					@Override
-					public Review mapRow(ResultSet rs, int rowNum)
-							throws SQLException {
-						Review rv = new Review();
-						rv.setId(rs.getInt("id"));
-						rv.setTitle(rs.getString("title"));
-						rv.setRating(rs.getInt("rating"));
-						rv.setDescription(rs.getString("description"));
-						return rv;
-					}
-
-				});
+		return jdbc.query("select * from Review, users where Review.username=users.username",
+				new ReviewRowMapper());
 	}
+	
+	public List<Review> getReviews(String username) {
+
+		return jdbc.query("select * from Review, users where Review.username=users.username and Review.username=:username",
+				new MapSqlParameterSource("username", username), new ReviewRowMapper());
+	}
+	
 
 	public Review getReview(int id) {
 
 		MapSqlParameterSource params = new MapSqlParameterSource();
 		params.addValue("id", id);
 
-		return jdbc.queryForObject("select * from Review where id = :id",
-				params, new RowMapper<Review>() {
-
-					@Override
-					public Review mapRow(ResultSet rs, int rowNum)
-							throws SQLException {
-						Review rv = new Review();
-						rv.setId(rs.getInt("id"));
-						rv.setTitle(rs.getString("title"));
-						rv.setRating(rs.getInt("rating"));
-						rv.setDescription(rs.getString("description"));
-						return rv;
-					}
-
-				});
+		return jdbc.queryForObject("select * from Review, users where Review.username=users.username and users.enabled=true and id=:id",
+				params, new ReviewRowMapper());
 	}
 	
 	public boolean update(Review rv) {
@@ -77,14 +58,14 @@ public class ReviewDao {
 	public boolean create(Review rv) {
 		BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(rv);
 		
-		return jdbc.update("insert into Review (title,rating,description) values (:title,:rating,:description)", params) == 1;
+		return jdbc.update("insert into Review (username,title,rating,description) values (:username, :title,:rating,:description)", params) == 1;
 	}
 	
 	@Transactional
 	public int[] create(List<Review> reviews) {
 		SqlParameterSource[] params = SqlParameterSourceUtils.createBatch(reviews.toArray());
 		
-		return jdbc.batchUpdate("insert into Review (title,rating,description) values (:title,:rating,:description)", params);
+		return jdbc.batchUpdate("insert into Review (username,title,rating,description) values (:username, :title,:rating,:description)", params);
 	}
 
 	public boolean delete(int id) {

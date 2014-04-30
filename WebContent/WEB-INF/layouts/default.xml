@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<definition name="travelbuddy.base" template="/WEB-INF/templates/default.jsp">
+	<put-attribute name="includes" value=""></put-attribute>
+	<put-attribute name="title" value="TravelBuddy"></put-attribute>
+	<put-attribute name="header" value="/WEB-INF/tiles/header.jsp"></put-attribute>
+	<put-attribute name="content" value="/WEB-INF/tiles/content.jsp"></put-attribute>
+	<put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp"></put-attribute>
+	</definition>
+
+	<definition name="home" extends="travelbuddy.base">
+	<put-attribute name="title" value="TravelBuddy Homepage"></put-attribute>
+	<put-attribute name="content" value="/WEB-INF/tiles/home.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="reviews" extends="travelbuddy.base">
+	<put-attribute name="title" value="Reviews overview"></put-attribute>
+	<put-attribute name="content" value="/WEB-INF/tiles/reviews.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="login" extends="travelbuddy.base">
+	<put-attribute name="title" value="Login page"></put-attribute>
+	<put-attribute name="content" value="/WEB-INF/tiles/login.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="newaccount" extends="travelbuddy.base">
+	<put-attribute name="includes" value="/WEB-INF/tiles/newaccountscript.jsp"></put-attribute>
+	<put-attribute name="title" value="Create account"></put-attribute>
+	<put-attribute name="content" value="/WEB-INF/tiles/newaccount.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="accountcreated" extends="travelbuddy.base">
+	<put-attribute name="title" value="Account created"></put-attribute>
+	<put-attribute name="content" value="/WEB-INF/tiles/accountcreated.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="createreview" extends="travelbuddy.base">
+	<put-attribute name="title" value="Create review"></put-attribute>
+	<put-attribute name="content" value="/WEB-INF/tiles/createreview.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="admin" extends="travelbuddy.base">
+	<put-attribute name="title" value="Admin page"></put-attribute>
+	<put-attribute name="content" value="/WEB-INF/tiles/admin.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="createdestination" extends="travelbuddy.base">
+	<put-attribute name="title" value="Create new destination"></put-attribute>
+	<put-attribute name="content" value="/WEB-INF/tiles/createdestination.jsp"></put-attribute>
+	</definition>	
+	
+	<definition name="denied" extends="travelbuddy.base">
+	<put-attribute name="title" value="Access denied"></put-attribute>
+	<put-attribute name="content" value="/WEB-INF/tiles/denied.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="destinations" extends="travelbuddy.base">
+	<put-attribute name="title" value="Destinations"></put-attribute>
+	<put-attribute name="content" value="/WEB-INF/tiles/destinations.jsp"></put-attribute>
+	</definition>	
+	
+	<definition name="error" extends="travelbuddy.base">
+	<put-attribute name="title" value="An error occurred"></put-attribute>
+	<put-attribute name="content" value="/WEB-INF/tiles/error.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="loggedout" extends="travelbuddy.base">
+	<put-attribute name="title" value="Logged out"></put-attribute>
+	<put-attribute name="content" value="/WEB-INF/tiles/loggedout.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="reviewsubmitted" extends="travelbuddy.base">
+	<put-attribute name="title" value="Review submitted"></put-attribute>
+	<put-attribute name="content" value="/WEB-INF/tiles/reviewsubmitted.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="reviewdeleted" extends="travelbuddy.base">
+	<put-attribute name="title" value="Offer deleted"></put-attribute>
+	<put-attribute name="content" value="/WEB-INF/tiles/reviewdeleted.jsp"></put-attribute>
+	</definition>			
+</tiles-definitions>	
